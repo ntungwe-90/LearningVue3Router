@@ -13,12 +13,14 @@
 export default {
     data() {
         return {
-            jobs: [
-                { title: 'Frontend Developer', id: 1, details: 'lorem' },
-                { title: 'Backend Developer', id: 2, details: 'lorem' },
-                { title: 'ui/ux Designer', id: 3, details: 'lorem' }
-            ]
+            jobs: []
         }
+    },
+    mounted(){
+        fetch('http://localhost:3000/jobs')
+        .then((res) => res.json())
+        .then(data => this.jobs= data)
+        .catch(err => console.log(err.message))
     }
 }
 </script>
